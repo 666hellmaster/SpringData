@@ -2,6 +2,7 @@ package com.example.springdatajpa;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class SpringDataJpaApplication {
@@ -16,11 +17,11 @@ public class SpringDataJpaApplication {
                 System.out.println("Connected to the PostgreSQL server successfully.");
 
                 // Create table
-                String createTableSQL = "CREATE TABLE IF NOT EXISTS employees (id SERIAL PRIMARY KEY, name VARCHAR(255), age INT)";
+                String createTableSQL = "CREATE TABLE IF NOT EXISTS employee (id SERIAL PRIMARY KEY, name VARCHAR(255), age INT)";
                 connection.createStatement().executeUpdate(createTableSQL);
 
                 // Insert sample data
-                String insertSQL = "INSERT INTO employees (name, age) VALUES (?, ?)";
+                String insertSQL = "INSERT INTO employee (name, age) VALUES (?, ?)";
                 PreparedStatement preparedStatement = connection.prepareStatement(insertSQL);
                 preparedStatement.setString(1, "John Doe");
                 preparedStatement.setInt(2, 30);
