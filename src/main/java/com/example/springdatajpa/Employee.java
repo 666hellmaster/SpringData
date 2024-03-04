@@ -21,6 +21,9 @@ public class Employee {
         
     }
 
-    public Employee(int number, String john, String doe) {
+    public Employee(int number, String firstname, String lastName) {
+        this.id = (long) number;
+        this.Firstname = firstname;
+        this.LastName = lastName;
     }
 }
