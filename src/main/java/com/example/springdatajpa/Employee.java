@@ -5,25 +5,42 @@ package com.example.springdatajpa;
  * @since 2024-03-01
  */
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
 public class Employee {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String Firstname;
-    private String LastName;
+    private String name;
+    private int age;
 
-    public Employee() {
-        
+    // Getters and setters (constructor not required for JPA)
+
+    public Long getId() {
+        return id;
     }
 
-    public Employee(int number, String firstname, String lastName) {
-        this.id = (long) number;
-        this.Firstname = firstname;
-        this.LastName = lastName;
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
     }
 }
