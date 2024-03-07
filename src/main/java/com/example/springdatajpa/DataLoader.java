@@ -9,12 +9,13 @@ import org.springframework.stereotype.Component;
 @Component
 public class DataLoader implements CommandLineRunner {
 
-    @Autowired
-    private EmployeeRepository employeeRepository;
+    private final EmployeeRepository employeeRepository;
 
-    @Autowired
-    private JdbcTemplate jdbcTemplate;
-    @Bean
+    public DataLoader(EmployeeRepository employeeRepository, JdbcTemplate jdbcTemplate) {
+        this.employeeRepository = employeeRepository;
+    }
+
+
     @Override
     public void run(String... args) throws Exception {
         insertData();
@@ -22,9 +23,12 @@ public class DataLoader implements CommandLineRunner {
 
     public void insertData() {
         // Populate sample data
-        jdbcTemplate.execute("INSERT INTO employee (id, first_name, last_name) VALUES (1, 'John', 'Doe')");
-        jdbcTemplate.execute("INSERT INTO employee (id, first_name, last_name) VALUES (2, 'Jane', 'Doe')");
-        jdbcTemplate.execute("INSERT INTO employee (id, first_name, last_name) VALUES (3, 'Emily', 'Doe')");
+        employeeRepository.save(new Employee(1L, "John", "Doe"));
+        employeeRepository.save(new Employee(2L, "Jane", "Doe"));
+        employeeRepository.save(new Employee(3L, "Emily", "Doe"));
+        
+        
+
         System.out.println("Sample data inserted into the database.");
     }
 }

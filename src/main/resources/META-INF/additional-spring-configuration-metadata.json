@@ -2,7 +2,6 @@
   "properties": [
     {
       "name": "jakarta.persistence.jdbc.url",
-      "type": "java.lang.String",
-      "description": "Description for jakarta.persistence.jdbc.url."
+      "type": "java.lang.String"
   }
 ] }

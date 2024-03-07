@@ -6,15 +6,28 @@ package com.example.springdatajpa;
  */
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class Employee {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private Long id;
     private String firstName;
-
     private String lastName;
+
+    public Employee() {
+        // Default constructor required by JPA
+    }
+
+    public Employee(Long id, String firstName, String lastName) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
 
     // Getters and setters
 
@@ -26,11 +39,11 @@ public class Employee {
         this.id = id;
     }
 
-    public String getName() {
+    public String getFirstName() {
         return firstName;
     }
 
-    public void setName(String firstName) {
+    public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
 
@@ -38,8 +51,7 @@ public class Employee {
         return lastName;
     }
 
-    public Employee setLastName(String lastName) {
+    public void setLastName(String lastName) {
         this.lastName = lastName;
-        return this;
     }
 }
