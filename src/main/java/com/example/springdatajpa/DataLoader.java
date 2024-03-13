@@ -1,14 +1,19 @@
 package com.example.springdatajpa;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
+
+import javax.sql.DataSource;
 
 @Component
 public class DataLoader {
 
-    private final JdbcTemplate jdbcTemplate = new JdbcTemplate();
+    private final JdbcTemplate jdbcTemplate;
 
-    public DataLoader() {
+
+    public DataLoader(DataSource dataSource) {
+        jdbcTemplate=new JdbcTemplate(dataSource);
     }
 
     public void insertData() {

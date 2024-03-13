@@ -1,5 +1,7 @@
 package com.example.springdatajpa;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -9,11 +11,19 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 
 @SpringBootApplication
-public class SpringDataApplication {
+public class SpringDataApplication implements CommandLineRunner {
     public static void main(String[] args) {
         SpringApplication.run(SpringDataApplication.class, args);
-        DataLoader dataLoader = new DataLoader();
-        dataLoader.insertData();
+        // todo ruzicka(hejny) proc tvoris instanci - tu vytvari spring
+       // DataLoader dataLoader = new DataLoader();
+       // dataLoader.insertData();
     }
 
+    @Autowired
+    DataLoader dataLoader;
+
+    @Override
+    public void run(String... args) throws Exception {
+        dataLoader.insertData();
+    }
 }
