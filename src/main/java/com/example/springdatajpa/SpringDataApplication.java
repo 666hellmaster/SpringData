@@ -9,9 +9,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 
 @SpringBootApplication
-public class SpringDataJpaApplication {
+public class SpringDataApplication {
     public static void main(String[] args) {
-        SpringApplication.run(SpringDataJpaApplication.class, args);
+        SpringApplication.run(SpringDataApplication.class, args);
         DataLoader dataLoader = new DataLoader();
         dataLoader.insertData();
     }
