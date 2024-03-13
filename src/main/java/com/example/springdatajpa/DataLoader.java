@@ -1,35 +1,19 @@
 package com.example.springdatajpa;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
-import org.springframework.context.annotation.Bean;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
 @Component
-public class DataLoader implements CommandLineRunner {
+public class DataLoader {
 
-    private final EmployeeRepository employeeRepository;
+    private final JdbcTemplate jdbcTemplate = new JdbcTemplate();
 
-    public DataLoader(EmployeeRepository employeeRepository, JdbcTemplate jdbcTemplate) {
-        this.employeeRepository = employeeRepository;
-    }
-
-
-    @Override
-    public void run(String... args) throws Exception {
-        insertData();
+    public DataLoader() {
     }
 
     public void insertData() {
-        // Populate sample data
-        employeeRepository.save(new Employee(1L, "John", "Doe"));
-        employeeRepository.save(new Employee(2L, "Jane", "Doe"));
-        employeeRepository.save(new Employee(3L, "Emily", "Doe"));
-        
-        
-
-        System.out.println("Sample data inserted into the database.");
+        jdbcTemplate.execute("INSERT INTO employee(id,firstname,lastname) VALUES(1,'Victor', 'Hugo')");
+        jdbcTemplate.execute("INSERT INTO employee(id,firstname,lastname) VALUES(2,'Dante', 'Alighieri')");
+        jdbcTemplate.execute("INSERT INTO employee(id,firstname,lastname) VALUES(3,'Stefan', 'Zweig')");
     }
 }

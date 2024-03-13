@@ -13,7 +13,7 @@ import java.util.List;
  */
 @SuppressWarnings("NullableProblems")
 @Repository
-public interface EmployeeRepository extends JpaRepository<Employee, Long> {
+public interface EmployeeRepository extends CrudRepository<Employee, Long> {
 
     List<Employee> findAll();
 
