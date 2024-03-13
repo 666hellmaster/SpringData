@@ -5,7 +5,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
-
+//todo: upravit propojeni s db
 @Component
 public class DataLoader {
 
